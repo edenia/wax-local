@@ -1,0 +1,13 @@
+version: '3.6'
+services:
+  wax-blockchain:
+    container_name: wax-blockchain
+    build: ./
+    ports:
+      - '8888:8888'
+
+  # waxteam-cdt:
+  #   container_name: waxteam-cdt
+  #   image: waxteam/cdt
+  #   ports:
+  #     - '8080:8080'

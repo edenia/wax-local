@@ -1,38 +1,4 @@
-FROM eosio/eosio:release_2.0.x as eosio.old.contracts
-WORKDIR /app
-
-# install dependencies
-RUN apt-get update
-RUN apt-get install -y wget git build-essential cmake --no-install-recommends
-RUN rm -rf /var/lib/apt/lists/*
-
-# install eosio.cdt 1.6.3
-RUN wget https://github.com/eosio/eosio.cdt/releases/download/v1.6.3/eosio.cdt_1.6.3-1-ubuntu-18.04_amd64.deb
-RUN apt install ./eosio.cdt_1.6.3-1-ubuntu-18.04_amd64.deb
-
-# build contracts release/1.8.x
-RUN git clone -b release/1.8.x https://github.com/EOSIO/eosio.contracts.git
-RUN cd /app/eosio.contracts && ./build.sh -c /usr/local/eosio.cdt
-
-
-FROM eosio/eosio:release_2.0.x as eosio.contracts
-WORKDIR /app
-
-# install dependencies
-RUN apt-get update
-RUN apt-get install -y wget git build-essential cmake --no-install-recommends
-RUN rm -rf /var/lib/apt/lists/*
-
-# install eosio.cdt 1.7.0
-RUN wget https://github.com/eosio/eosio.cdt/releases/download/v1.7.0/eosio.cdt_1.7.0-1-ubuntu-18.04_amd64.deb
-RUN apt install ./eosio.cdt_1.7.0-1-ubuntu-18.04_amd64.deb
-
-# build contracts releases/1.9.x
-RUN git clone -b release/1.9.x https://github.com/EOSIO/eosio.contracts.git
-RUN cd /app/eosio.contracts && ./build.sh -c /usr/local/eosio.cdt
-
-
-FROM ubuntu:18.04 as wax
+FROM waxteam/production:v2.0.5wax01 as blockchain
 WORKDIR /app
 
 # install dependencies
@@ -74,8 +40,16 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN git clone https://github.com/worldwide-asset-exchange/wax-blockchain.git
 RUN cd wax-blockchain && git submodule update --init --recursive
 
-RUN cd wax-blockchain && ./wax_build.sh -i ~/wax-blockchain
-RUN cd wax-blockchain && ./wax_install.sh
+RUN cd wax-blockchain && ./wax_build.sh -i ~/wax-blockchain && ./wax_install.sh
 
-COPY --from=eosio.old.contracts /app/eosio.contracts/build/contracts ./eosio.old.contracts
-COPY --from=eosio.contracts /app/eosio.contracts/build/contracts ./eosio.contracts
+# RUN "export PATH=~/wax-blockchain/bin:$PATH" >> ~/.bashrc && source ~/.bashrc
+
+ENV TESTNET_EOSIO_PRIVATE_KEY 5KQPgxtxWqziZggdsYjgMkBcd8iHr96HPY2kr4CGLqA7eid4FCG
+ENV TESTNET_EOSIO_PUBLIC_KEY EOS6SpGqFohbAHZHK3cDTT7oKyQedwXd4nZ6H6t9PKk2UN5hqNbna
+
+COPY ./start.sh ./
+COPY ./config.ini ./config/
+COPY ./genesis.json ./
+
+RUN chmod +x ./start.sh
+CMD ["./start.sh"]
