@@ -37,12 +37,16 @@ RUN apt-get install -y \
 
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/worldwide-asset-exchange/wax-blockchain.git
-RUN cd wax-blockchain && git submodule update --init --recursive
 
-RUN cd wax-blockchain && ./wax_build.sh -i ~/wax-blockchain && ./wax_install.sh
+# RUN git clone https://github.com/worldwide-asset-exchange/wax-blockchain.git
+# RUN cd wax-blockchain && git submodule update --init --recursive
+
+# RUN cd wax-blockchain && ./wax_build.sh -i ~/wax-blockchain && ./wax_install.sh
 
 # RUN "export PATH=~/wax-blockchain/bin:$PATH" >> ~/.bashrc && source ~/.bashrc
+
+RUN git clone --recursive https://github.com/worldwide-asset-exchange/wax-cdt.git
+RUN cd wax-cdt && ./build.sh && sudo ./install.sh
 
 ENV TESTNET_EOSIO_PRIVATE_KEY 5KQPgxtxWqziZggdsYjgMkBcd8iHr96HPY2kr4CGLqA7eid4FCG
 ENV TESTNET_EOSIO_PUBLIC_KEY EOS6SpGqFohbAHZHK3cDTT7oKyQedwXd4nZ6H6t9PKk2UN5hqNbna

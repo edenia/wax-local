@@ -140,7 +140,7 @@ logs() {
 if [ ! -f inited ]; then
   genesis
   setup_wallet
-  # setup_accounts
+  setup_accounts
   # setup_contracts
   touch inited
 else
