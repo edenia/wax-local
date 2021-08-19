@@ -105,9 +105,9 @@ setup_contracts() {
   cleos set contract eosio.msig ./eosio.contracts.v1.8.x/eosio.msig/
   cleos push action eosio setpriv '["eosio.msig", 1]' -p eosio@active
 
-  cleos push action eosio.token create '[ "eosio", "10000000000.0000 EOS" ]' -p eosio.token@active
-  cleos push action eosio.token issue '[ "eosio", "1000000000.0000 EOS", "memo" ]' -p eosio@active
-  cleos push action eosio init '["0", "4,EOS"]' -p eosio@active
+  cleos push action eosio.token create '[ "eosio", "10000000000.0000 WAX" ]' -p eosio.token@active
+  cleos push action eosio.token issue '[ "eosio", "1000000000.0000 WAX", "memo" ]' -p eosio@active
+  cleos push action eosio init '["0", "4,WAX"]' -p eosio@active
 
   lock_wallet
   echo "====================================== Done setup_contracts ======================================"

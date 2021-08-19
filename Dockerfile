@@ -1,4 +1,4 @@
-FROM waxteam/production:v2.0.5wax01 as blockchain
+FROM waxteam/dev as blockchain
 WORKDIR /app
 
 # install dependencies
@@ -34,19 +34,18 @@ RUN apt-get install -y \
     pkg-config \
     clang \
     llvm-7-dev
-
 RUN rm -rf /var/lib/apt/lists/*
-
 
 # RUN git clone https://github.com/worldwide-asset-exchange/wax-blockchain.git
 # RUN cd wax-blockchain && git submodule update --init --recursive
-
 # RUN cd wax-blockchain && ./wax_build.sh -i ~/wax-blockchain && ./wax_install.sh
-
 # RUN "export PATH=~/wax-blockchain/bin:$PATH" >> ~/.bashrc && source ~/.bashrc
 
 RUN git clone --recursive https://github.com/worldwide-asset-exchange/wax-cdt.git
 RUN cd wax-cdt && ./build.sh && sudo ./install.sh
+
+RUN git clone -b wax-1.7.0-2.0.2 https://github.com/worldwide-asset-exchange/wax-system-contracts.git wax-system-contracts
+RUN cd wax-system-contracts && ./build.sh -c /usr/local/eosio.cdt
 
 ENV TESTNET_EOSIO_PRIVATE_KEY 5KQPgxtxWqziZggdsYjgMkBcd8iHr96HPY2kr4CGLqA7eid4FCG
 ENV TESTNET_EOSIO_PUBLIC_KEY EOS6SpGqFohbAHZHK3cDTT7oKyQedwXd4nZ6H6t9PKk2UN5hqNbna
