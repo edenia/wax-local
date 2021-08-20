@@ -33,7 +33,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            eoscostarica506/eos-local
+            eoscostarica506/wax-local
             ghcr.io/${{ github.repository }}
       
       - name: Build new images and push
@@ -45,4 +45,4 @@ jobs:
           TESTNET_EOSIO_PRIVATE_KEY: ${{ secrets.TESTNET_EOSIO_PRIVATE_KEY }}
           TESTNET_EOSIO_PUBLIC_KEY: ${{ secrets.TESTNET_EOSIO_PUBLIC_KEY }}
           DOCKER_REGISTRY: eoscostarica506
-          IMAGE_NAME: eos-local
+          IMAGE_NAME: wax-local
