@@ -1,8 +1,4 @@
 <p align="center">
-	<img src="docs/eoslocal.png" width="600">
-</p>
-
-<p align="center">
 	<a href="#">
 		<img src="https://img.shields.io/dub/l/vibe-d.svg" alt="MIT">
 	</a>
@@ -103,7 +99,6 @@ By this point, you already have the WAX Local Network image running locally.
 ├── .github
 │   └── workflows
 │       └── publish-docker-image.yml
-├── docs ..................... Some media content for README
 ├── config.ini ............... Nodeos configuration file
 ├── Dockerfile ............... Contains instructions for building the WAX Local Network image
 ├── genesis.json ............. Specifies the network genesis node parameters

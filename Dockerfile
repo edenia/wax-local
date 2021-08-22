@@ -54,6 +54,11 @@ RUN rm -rf /var/lib/apt/lists/*
 
 RUN echo "export PATH=~/wax-blockchain/bin:$PATH" >> ~/.bashrc
 
+RUN git clone https://github.com/pinknetworkx/atomicassets-contract.git
+RUN cd atomicassets-contract \
+    && eosio-cpp -abigen -I include -R resource -contract atomicassets -o atomicassets.wasm src/atomicassets.cpp
+
+
 ENV TESTNET_EOSIO_PRIVATE_KEY 5KQPgxtxWqziZggdsYjgMkBcd8iHr96HPY2kr4CGLqA7eid4FCG
 ENV TESTNET_EOSIO_PUBLIC_KEY EOS6SpGqFohbAHZHK3cDTT7oKyQedwXd4nZ6H6t9PKk2UN5hqNbna
 
