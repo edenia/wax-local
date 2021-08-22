@@ -61,6 +61,12 @@ setup_contracts() {
   echo "====================================== Start setup_contracts ======================================"
   unlock_wallet
 
+  curl --request POST \
+    --url http://127.0.0.1:8888/v1/producer/schedule_protocol_feature_activations \
+    -d '{"protocol_features_to_activate": ["0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd"]}' \
+    && echo -e "\n"
+  sleep 1
+
   # Deploy system contract
   cleos set code eosio ./eosio.contracts.v1.8.x/eosio.system/eosio.system.wasm
   sleep 1
