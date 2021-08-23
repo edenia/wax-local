@@ -20,6 +20,11 @@ build-docker: ./Dockerfile
 		--build-arg testnet_eosio_public_key="$(TESTNET_EOSIO_PUBLIC_KEY)" \
 		.
 
+pull-docker: ##@devops Pull docker image
+pull-docker:
+	@echo "Building docker container ..."
+	@docker pull $(DOCKER_REGISTRY)/$(IMAGE_NAME):$(LATEST_TAG) || true
+
 push-image: ##@devops Push freshly built image and tag with release or latest tag
 push-image:
 	@docker push $(DOCKER_REGISTRY)/$(IMAGE_NAME):$(LATEST_TAG)

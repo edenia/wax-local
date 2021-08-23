@@ -49,8 +49,8 @@ Public key: EOS6SpGqFohbAHZHK3cDTT7oKyQedwXd4nZ6H6t9PKk2UN5hqNbna
 - [Eosio](https://developers.eos.io/welcome/latest/getting-started-guide/local-development-environment/index)
 
 ## Quick start
-- Download the Docker image `docker pull eoscostarica506/wax-local`
-- Run the Docker image `docker run -dp 8888:8888 eoscostarica506/wax-local`
+- Download the Docker image `make pull-docker`
+- Run the Docker image `make run`
 - Run the command `cleos get info` or check the link in the browser `http://127.0.0.1:8888/v1/chain/get_info`
 
 If you run the command `cleos get info` or go to` http://127.0.0.1:8888/v1/chain/` and get information like the following it is because you already have the environment ready to work.
@@ -85,10 +85,12 @@ Public key: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
 
 ## Instructions for creating WAX Local Network image locally
 To create the Docker image locally, you must run the following commands:
-- Clone the local Eos repository `https://github.com/eoscostarica/wax-local`
+- Clone the wax-local repository `https://github.com/eoscostarica/wax-local`
 - Enter to the cloned repository folder `cd <path/wax-local>`
-- Build the Dockerfile image with env variables `docker build -t wax-local --build-arg testnet_eosio_public_key="<public_key>" --build-arg testnet_eosio_private_key="<private_key>" .`
-- Run the Dockerfile image `docker run -dp 8888:8888 wax-local`
+- Copy .env.example to .env `cp .env.example .env`
+- Create and set a key in .env file `cleos create key --to-console`
+- Build the Dockerfile image with env variables `make build-docker`
+- Run the Dockerfile image `make run`
 - Run the command `cleos get info` or check next browser link `http://127.0.0.1:8888/v1/chain/get_info`
 
 By this point, you already have the WAX Local Network image running locally.
