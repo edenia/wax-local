@@ -7,7 +7,7 @@ VERSION ?= $(shell git rev-parse --short HEAD)
 
 run: ##@devops Run docker image
 run:
-	@docker run -dp 8888:8888 wax-local
+	@docker run -dp 8888:8888 $(DOCKER_REGISTRY)/$(IMAGE_NAME):$(LATEST_TAG)
 
 build-docker: ##@devops Build docker image
 build-docker: ./Dockerfile
