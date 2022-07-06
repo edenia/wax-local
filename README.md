@@ -109,8 +109,6 @@ By this point, you already have the WAX Local Network image running locally.
 └── start.sh ................. Instructions for configuring contracts and usage characteristics
 ```
 
-## License
-MIT © [EOS Costa Rica](https://eoscostarica.io/)
 
 ## Contributing
 If you want to contribute to this repository, please follow the steps below:
@@ -129,13 +127,15 @@ If you find any bugs, please report them by opening an issue at [this link](http
 ## What is EOSIO?
 EOSIO is a highly performant open-source blockchain platform, built to support and operate safe, compliant, and predictable digital infrastructures.
 
-## About EOS Costa Rica
-<br>
-<center>
-<img src="https://raw.githubusercontent.com/eoscostarica/design-assets/master/logos/eosCR/fullColor-horizontal-transparent-white.png" width="400" >
-</center>
-<br>
+## About Edenia
 
-EOS Costa Rica is an independently-owned, self-funded, bare-metal Genesis block producer that provides stable and secure infrastructure for EOSIO blockchains. We support open source software for our community while offering enterprise solutions and custom smart contract development for our clients.
+<p align="center">
+	<a href="https://edenia.com">
+		<img src="https://user-images.githubusercontent.com/5632966/165814672-9a7763a8-9748-405d-8bc0-de0278ce9eb4.png" width="300">
+	</a>
+</p>
+<br/>
 
-[eoscostarica.io](https://eoscostarica.io/)
+Edenia runs independent blockchain infrastructure and develops web3 solutions. Our team of technology-agnostic builders has been operating since 1987, leveraging the newest technologies to make the internet safer, more efficient, and more transparent.
+
+[edenia.com](https://edenia.com/)
