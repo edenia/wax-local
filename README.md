@@ -1,12 +1,10 @@
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/55892352/178836808-35b4aaee-db31-492e-b8cb-b0ddf5912186.png" width="300" >
-</p>
+	<img src="https://user-images.githubusercontent.com/55892352/178836808-35b4aaee-db31-492e-b8cb-b0ddf5912186.png" width="200" >
 
 <p align="center">
 	<a href="#">
 		<img src="https://img.shields.io/dub/l/vibe-d.svg" alt="MIT">
 	</a>
-</p>
 
 # WAX Local Network
 
@@ -135,7 +133,7 @@ EOSIO is a highly performant open-source blockchain platform, built to support a
 
 <div align="center">
 	<a href="https://edenia.com">
-		<img src="https://user-images.githubusercontent.com/5632966/178800854-cffb01ea-b55a-44b2-bcfa-872301874a43.png" width="300">
+		<img src="https://raw.githubusercontent.com/edenia/.github/master/.github/workflows/images/edenia-logo.png" width="300">
 	</a>
 </p>
 
